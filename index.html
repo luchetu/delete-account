@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Delete Account - eFarm</title>
+
+    <link rel="icon" href="/assets/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="delete-box">
+        <div class="logo-container">
+          <img src="/assets/efarm.png" alt="eFarm Logo" class="logo" />
+        </div>
+        <h2 class="heading">Delete Your Account</h2>
+        <p class="warning-text">
+          This action is irreversible. All your data will be permanently
+          deleted.
+        </p>
+
+        <form class="delete-form" id="deleteForm">
+          <div class="form-group">
+            <label for="confirm">Type "DELETE" to confirm</label>
+            <input
+              type="text"
+              id="confirm"
+              name="confirm"
+              placeholder="Type DELETE here"
+              required
+            />
+          </div>
+          <button type="submit" class="delete-btn" id="submitBtn" disabled>
+            Delete Account
+          </button>
+        </form>
+
+        <div id="deletedMessage" style="display: none; margin-top: 2rem">
+          <h3>Your account has been deleted.</h3>
+          <p>Goodbye 👋</p>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const input = document.getElementById("confirm");
+      const button = document.getElementById("submitBtn");
+      const form = document.getElementById("deleteForm");
+      const message = document.getElementById("deletedMessage");
+
+      input.addEventListener("input", () => {
+        button.disabled = input.value !== "DELETE";
+      });
+
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+        form.style.display = "none";
+        message.style.display = "block";
+      });
+    </script>
+  </body>
+</html>
